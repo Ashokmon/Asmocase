@@ -6,7 +6,9 @@ import {
     Link,
     createRoutesFromElements,
 } from "react-router-dom";
-import Home from '../pages/Home'
+import Home from '../pages/Home';
+import Header from '../components/Header';
+import Layout from '../pages/Layout/Layout';
 
 
 const router = createBrowserRouter(
@@ -14,22 +16,14 @@ const router = createBrowserRouter(
         <>
             <Route
                 path="/"
-                element={<Home/>}
+                element={<Layout/>}
                 errorElement={<div>error page</div>}
             >
-                <Route
-                    path="/about"
-                    element={<div>about page</div>}
-                    errorElement={<div>error page</div>}
-                >
-                </Route>
-
-                <Route
-                    path="/about"
-                    element={<div>about page</div>}
-                    errorElement={<div>error page</div>}
-                >
-                </Route>
+                <Route index element={<Home/>}></Route>
+                <Route path="/featured" element={<div>featured page</div>}></Route>
+                <Route path="/packages" element={<div>packages page</div>}></Route>
+                <Route path="/contactUs" element={<div>contactUs page</div>}></Route>  
+               
             </Route>
         </>
 
