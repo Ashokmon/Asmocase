@@ -3,7 +3,9 @@ import styles from './Header.module.scss'
 import { headerConfig,NavItems } from '../../constants';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Link,useLocation } from 'react-router-dom';
-
+// import WidgetsIcon from '@mui/icons-material/Widgets';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Component
 
@@ -15,18 +17,18 @@ const RenderTitle = ({data}) => {
             <h1 className= {styles.title}> 
              <span>{firstTitle}</span>  
              <span>{secondTitle}</span>  
-                </h1> 
-            <div className= {styles.options}>
-               { options.map ((val,index)=> 
-               <div key={index}><span> {val} </span> <PlayArrowIcon/> </div> )}
-            </div>
+             </h1> 
+             <div className= {styles.options}>
+            { options.map ((val,index)=> 
+             <div key={index}><span> {val} </span> <PlayArrowIcon/> </div> )}
+             </div>
         </div>
     )
 }
 
 
 
-const RenderNavigationLinks = ({data,setCurrentNav,currentNav}) => {
+const RenderNavigationLinks = ({data,setCurrentNav,currentNav,setIsMenuOpen}) => {
     return (
        <div className={styles.sectionTwo}>
         <nav className={styles.navigation}>
@@ -35,7 +37,7 @@ const RenderNavigationLinks = ({data,setCurrentNav,currentNav}) => {
                 className={nav.id === currentNav.id ? styles.active :''}
                 to={nav.routes}
                 key={nav.id}
-                onClick={()=>setCurrentNav(nav)}
+                onClick={()=>{setCurrentNav(nav);setIsMenuOpen(false);}}
                 >
                     {nav.label}
                 </Link>
@@ -50,7 +52,7 @@ const RenderNavigationLinks = ({data,setCurrentNav,currentNav}) => {
 
 const Header = ({navData = NavItems,headerData = headerConfig}) => {
     const [currentNav,setCurrentNav] = useState ({ })
-    
+    const [isMenuOpen,setIsMenuOpen] = useState(false)
     const { pathname } = useLocation()
 
 
@@ -76,6 +78,25 @@ const Header = ({navData = NavItems,headerData = headerConfig}) => {
         )
     }
 
+
+    const renderMobileMenu = () =>{
+        return(
+            <div className={styles.mobileContainer}>
+
+                   <RenderNavigationLinks 
+                   currentNav={currentNav}
+                    setCurrentNav={setCurrentNav}
+                    data={navData} 
+                    setIsMenuOpen ={setIsMenuOpen}
+                    />
+                     {renderButtons()}
+                     <div className={styles.closeIcon}
+                     onClick={() => setIsMenuOpen(false)}
+                     >< CloseIcon/></div>
+            </div>
+        )
+    }
+
     return (
         <header>
             <div className= {styles.container}>
@@ -87,7 +108,15 @@ const Header = ({navData = NavItems,headerData = headerConfig}) => {
                     setCurrentNav={setCurrentNav}
                     data={navData}/>
                     {renderButtons()}
+                   <div className={styles.mobileMenu}
+                   onClick={() => setIsMenuOpen(true)}
+                   >
+                    <MenuIcon />
+                    </div>
+
+                    
                 </div>
+                {isMenuOpen ?  renderMobileMenu () : ''}
             </div>
         </header>
 
@@ -95,8 +124,6 @@ const Header = ({navData = NavItems,headerData = headerConfig}) => {
 }
 
 export default Header
-
-
 
 
 // const renderTitle = (data) => {
