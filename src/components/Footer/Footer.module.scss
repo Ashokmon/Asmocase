@@ -1,0 +1,113 @@
+@import '../../styles/global.scss';
+
+
+$footerColor: #D9DBE1;
+
+.container {
+@include flexRow(flex-start,space-around);
+width:100vw;
+min-height:250px;
+padding:50px;
+color:$footerColor ;
+background-color: $primaryColor;
+@include content;
+
+
+
+.aboutPage{
+    @include flexCol(flex-start,center);
+    gap:15px;
+    width: 200px;
+
+    .heading{
+        @include heading;
+        padding:10px 0;
+        color:$baseColor;
+
+        :last-child{
+            color: $secondaryColor;
+        }
+
+    }
+    .socialMedia{
+        @include flexRow();
+        gap:15px;
+
+        span{
+            cursor: pointer;
+        }
+        :hover{
+            color:$secondaryColor;
+        }
+    }
+}
+
+
+
+.menu{
+    min-width: 175px;
+
+        .subHeading{
+            @include subHeading;
+            // padding:10px;
+            color:$baseColor;
+        }
+
+        .menuItems{
+            @include flexCol(flex-start);
+            gap:15px;
+
+            :hover{
+                color:$secondaryColor;
+            }
+
+            :first-child{
+                padding-top: 10px;
+            }
+
+        }
+    }
+   
+.newsLetter{
+    .label{
+        @include subHeading;
+        padding: 10px 0;
+        color:$baseColor;
+    }
+
+    .emailContainer{
+        @include flexRow();
+        gap:10px;
+        padding: 5px 10px;
+        border-radius: 8px;
+        padding: 5px 10px;
+        background-color: rgb(198 198 198);
+
+        button{
+            border: none;
+            background: none;
+        }
+
+        input{
+            background: transparent;
+            border: none;
+            color:black;
+            padding: 5px;
+            outline:none;
+            font-weight: bold;
+        }
+
+        svg{
+            font-size: 14px;
+            transform: rotate(-45deg);
+            color:$secondaryColor;
+        }
+
+
+
+    }
+}
+
+}
+
+

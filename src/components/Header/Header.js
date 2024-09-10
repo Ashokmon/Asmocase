@@ -7,6 +7,7 @@ import { Link,useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
+
 // Component
 
 const RenderTitle = ({data}) => {
@@ -112,9 +113,7 @@ const Header = ({navData = NavItems,headerData = headerConfig}) => {
                    onClick={() => setIsMenuOpen(true)}
                    >
                     <MenuIcon />
-                    </div>
-
-                    
+                    </div>                 
                 </div>
                 {isMenuOpen ?  renderMobileMenu () : ''}
             </div>
