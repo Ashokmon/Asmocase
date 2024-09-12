@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -38,6 +38,9 @@ const supportMenu = {
 
 
 const Footer = () => {
+
+  const email =useRef()
+
 
   const renderAboutPage = (data) => {
     const { heading, content, socialIcons } = data;
@@ -82,7 +85,10 @@ const Footer = () => {
 
   const handleNewsLetter = (event) => {
     event.preventDefault();
-    console.log('from clicked')
+
+    const {current} = email
+    console.log('email',current.value)
+    email.current.value = ''
 
   }
 
@@ -93,7 +99,7 @@ const Footer = () => {
        
         <form onSubmit={handleNewsLetter}>
         <div className={Styles.emailContainer}>
-          <input type="email" placeholder='your email address' required />
+          <input  ref={email} type="email" placeholder='your email address' required />
           <button type='submit' className={Styles.sendIcon}><SendIcon /></button>
           </div>
         </form>

@@ -1,6 +1,5 @@
 @import '../../styles/global.scss';
 
-
 $footerColor: #D9DBE1;
 
 .container {
@@ -11,7 +10,6 @@ padding:50px;
 color:$footerColor ;
 background-color: $primaryColor;
 @include content;
-
 
 
 .aboutPage{
@@ -41,8 +39,6 @@ background-color: $primaryColor;
         }
     }
 }
-
-
 
 .menu{
     min-width: 175px;
@@ -106,6 +102,30 @@ background-color: $primaryColor;
 
 
     }
+}
+
+@media only screen and (max-width:915px){
+    @include flexRow(flex-start,flex-start,30);
+    flex-wrap: wrap;
+    width: 100%;
+
+    >div:not(.newsLetter){
+        width: 45%;
+    }
+.menu{
+     .menuItems{
+        @include flexRow(flex-start,flex-start,15);
+        flex-wrap: wrap;
+     }
+}
+}
+
+
+@media only screen and (max-width:600px){
+    >div:not(.newsLetter){
+        width: 90%;
+    }
+
 }
 
 }
