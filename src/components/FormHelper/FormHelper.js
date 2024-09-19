@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import styles from './FormHelper.module.scss';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-function FormHelper({ config }) {
+function FormHelper({ 
+    config =[], 
+    onSubmit = () =>{},
+    submitConfig ={} ,
+    formStyles ={} 
+}) {
 
     const [formData, setFormdata] = useState({})
     const [formErrors, setFormErrors] = useState({})
+
+    const {label = "Submit" ,btnStyles ={} } = submitConfig
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -21,12 +29,16 @@ function FormHelper({ config }) {
         //   })
 
     }
+
     const renderFields = (data, index) => {
         const { label, name, type, options, required } = data
 
         const renderSelect = () => {
             return (
-                <select name={name} id={name} onChange={handleChange}>
+                <select value={formData[name] || ''} name={name} id={name} onChange={handleChange}>
+                     <option key={index} value="" disabled hidden>
+                     Select {label}
+                     </option>
                     {options.map((option, index) =>
                         <option key={index} value={option.value}>
                             {option.label}
@@ -44,6 +56,8 @@ function FormHelper({ config }) {
                     name={name}
                     id={name}
                     onChange={handleChange}
+                    required={required}
+                    value={formData[name] || ''}
                 ></input>
             )
         }
@@ -59,9 +73,13 @@ function FormHelper({ config }) {
         }
 
         return (
-            <div className="field" key={index}>
+            <div className={styles.field} key={index}>
                 <label htmlFor={name}>{label}</label>
                 {renderFieldType()}
+                <div className={styles.error}>
+                {formErrors[name] ? formErrors[name]:''}
+                </div>
+               
             </div>
         )
     }
@@ -82,23 +100,26 @@ function FormHelper({ config }) {
         if(Object.keys(errors).length > 0){
             setFormErrors(errors)
         }
-
-        console.log(formData);
+ else{
+        onSubmit(formData)
+        setFormdata(config)
+    }
     }
 
     return (
 
-        <div className="container">
-            <form action="" className="form" onSubmit={handleSubmit}>
-                <div className="fieldsContainer">
+        <div className={styles.container} >
+            <form  className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.fieldsContainer} style={formStyles}>
                     {config.map(renderFields)}
                 </div>
-                <button className="submitBtn">
-                    submit
+                <button className={styles.submitBtn} style={btnStyles}>
+                   {label} <ArrowForwardIcon />
                 </button>
             </form>
         </div>
     )
 }
+
 
 export default FormHelper
