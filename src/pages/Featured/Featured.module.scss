@@ -1,0 +1,56 @@
+@import '../../styles/global.scss';
+
+.container{
+    @include content();   
+
+
+.header{
+    padding:30px 20px;
+    @include flexRow();
+    gap:10px;
+
+    .title{
+        @include heading;
+        width:max-content;
+        color:$primaryColor;
+
+        span{
+            border-bottom: 5px solid $secondaryColor;
+        }
+        }
+        .tabs{
+            @include flexRow();
+            flex-wrap:wrap;
+            gap:10px;
+
+            .tab{
+                @include flexRow();
+                gap:10px;
+                border-radius: 30px;
+                border:1px solid #333;
+                cursor:pointer;
+                padding: 10px 20px;
+            }
+            .activeTabs{
+                border: none;
+                background-color: $secondaryColor;
+                color:$baseColor;
+            }
+        }
+      
+        .scrollButtons{
+            @include flexRow();
+            gap:30px;
+
+            .right .left{
+                width: 35px;
+                height:35px;
+            }
+            .left{
+                transform:rotate(180deg);
+            }
+        }
+
+
+    }
+}

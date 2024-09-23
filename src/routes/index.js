@@ -9,6 +9,7 @@ import {
 import Home from '../pages/Home';
 import Header from '../components/Header';
 import Layout from '../pages/Layout/Layout';
+import Featured from '../pages/Featured';
 
 
 const router = createBrowserRouter(
@@ -20,7 +21,7 @@ const router = createBrowserRouter(
                 errorElement={<div>error page</div>}
             >
                 <Route index element={<Home/>}></Route>
-                <Route path="/featured" element={<div>featured page</div>}></Route>
+                <Route path="/featured" element={<Featured/>}></Route>
                 <Route path="/packages" element={<div>packages page</div>}></Route>
                 <Route path="/contactUs" element={<div>contactUs page</div>}></Route>  
                
