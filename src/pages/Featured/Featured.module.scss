@@ -1,8 +1,8 @@
 @import '../../styles/global.scss';
 
 .container{
+    
     @include content();   
-
 
 .header{
     padding:30px 20px;
@@ -53,4 +53,5 @@
 
 
     }
+
 }
