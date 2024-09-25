@@ -1,57 +1,180 @@
 @import '../../styles/global.scss';
 
-.container{
-    
-    @include content();   
+.container {
 
-.header{
-    padding:30px 20px;
-    @include flexRow();
-    gap:10px;
+    @include content();
 
-    .title{
-        @include heading;
-        width:max-content;
-        color:$primaryColor;
+    .header {
+        padding: 30px 20px;
+        @include flexRow();
+        gap: 10px;
 
-        span{
-            border-bottom: 5px solid $secondaryColor;
+        .title {
+            @include heading;
+            width: max-content;
+            color: $primaryColor;
+
+            span {
+                border-bottom: 5px solid $secondaryColor;
+                margin-right: 10px;
+            }
         }
-        }
-        .tabs{
+
+        .tabs {
             @include flexRow();
-            flex-wrap:wrap;
-            gap:10px;
+            flex-wrap: wrap;
+            gap: 10px;
 
-            .tab{
+            .tab {
                 @include flexRow();
-                gap:10px;
+                gap: 10px;
                 border-radius: 30px;
-                border:1px solid #333;
-                cursor:pointer;
+                border: 1px solid #333;
+                cursor: pointer;
                 padding: 10px 20px;
             }
-            .activeTabs{
+
+            .activeTabs {
                 border: none;
                 background-color: $secondaryColor;
-                color:$baseColor;
+                color: $baseColor;
             }
         }
-      
-        .scrollButtons{
-            @include flexRow();
-            gap:30px;
 
-            .right .left{
+        .scrollButtons {
+            @include flexRow();
+            gap: 30px;
+
+            .right .left {
                 width: 35px;
-                height:35px;
+                height: 35px;
             }
-            .left{
-                transform:rotate(180deg);
+
+            .left {
+                transform: rotate(180deg);
             }
         }
 
 
     }
 
+    .houses {
+        @include flexRow(flex-start, flex-start, 25);
+        padding: 15px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+
+
+        .buliding {
+            @include flexCol(flex-start, flex-start, 5);
+            max-width: 280px;
+            flex: 0 0 auto;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid gray;
+
+            :hover {
+                transform: scale(1);
+                border-color: $primaryColor;
+            }
+
+            img {
+                object-fit: cover;
+                align-items: center;
+                width: 100%;
+            }
+
+            .price {
+                @include heading;
+                padding: 15px;
+                position: relative;
+
+
+                :first-child {
+                    position: absolute;
+                    margin-left: -20px;
+
+                }
+                
+                span{
+                    @include content;                   
+                }
+
+            }
+
+            .interest {
+                padding-bottom: 10px;
+                @include content;
+            }
+
+            .viewMore {
+                @include flexRow();
+                background: none;
+                border: none;
+                width: 100%;
+
+                .section{
+                    background: $secondaryColor;
+                    color: $baseColor;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    @include flexRow();
+                    gap:10px;
+                
+                span {
+                      svg {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }  
+        
+            .details {
+                padding: 10px;
+                @include flexRow(center,space-between,80);
+            
+            
+
+                .label {
+                    @include subHeading();
+                    max-width: 60%;
+                }
+
+                .otherDetails {
+                    @include flexRow();
+                    font-size: 8px;
+                    gap: 10px;
+
+                    section{
+                        @include flexCol();
+                        gap:5px;
+
+                        svg{
+                            font-size: 15px;
+                        }
+                    }
+                }
+            
+            }
+        }
+    }
+    
+
+    @media only screen and (max-width:800px) {
+      .header{
+        flex-direction: column;
+        gap:30px;
+      }
+  .tabs{
+    font-size: 10px;
+    gap:6px;
+  }
+
+  .tab{
+    padding: 8px 14px;
+  }
+
+
+        
+    }
 }

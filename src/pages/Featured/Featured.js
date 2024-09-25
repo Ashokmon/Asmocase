@@ -5,67 +5,69 @@ import { images } from '../../assets/images';
 import { icons } from '../../assets/icons';
 
 
+
+
 const tabConfig = [
-    { label: 'House', id: 'house', icon: <icons.HouseIcon/> },
-    { label: 'Villa', id: 'villa', icon: <icons.VillaIcon />},
-    { label: 'Apartment', id: 'apartment', icon: <icons.ApartmentIcon/> },
+    { label: 'House', id: 'house', icon: <icons.HouseIcon /> },
+    { label: 'Villa', id: 'villa', icon: <icons.VillaIcon /> },
+    { label: 'Apartment', id: 'apartment', icon: <icons.ApartmentIcon /> },
 ];
 
 const houseConfig = [
-{
-    label:'Ikeja, Lagos',
-    id:'lkeja-lagos',
-    price:2000000,
-    bedroom:3,
-    interest:'31',
-    rating:4.5,
-    imgSrc:images.featuredhouse1,
-},
-{
-    label:'keja, Lagos',
-    id:'keja-lagos',
-    price:20000,
-    bedroom:2,
-    interest:'23',
-    rating:4.8,
-    imgSrc:images.featuredhouse2,
-},
-{
-    label:'eja, Lagos',
-    id:'eja-lagos',
-    price:20000,
-    bedroom:4,
-    interest:'14',
-    rating:4.2,
-    imgSrc:images.featuredhouse3,
-},
-{
-    label:'ja, Lagos',
-    id:'ja-lagos',
-    price:1000000,
-    bedroom:3,
-    interest:'36',
-    rating:4.4,
-    imgSrc:images.featuredhouse4,
-},
-{
-    label:'a, Lagos',
-    id:'a-lagos',
-    price:1000000,
-    bedroom:2,
-    interest:'31',
-    rating:4.6,
-    imgSrc:images.featuredhouse5,
-},
-{
-    label:'Na, Lagos',
-    id:'na-lagos',
-    price:20000,
-    bedroom:3,
-    interest:'8',
-    rating:4.9,
-    imgSrc:images.featuredhouse1,
-}
+    {
+        label: 'Ikeja, Lagos',
+        id: 'lkeja-lagos',
+        price: 2000000,
+        bedroom: 3,
+        interest: '31',
+        rating: 4.5,
+        imgSrc: images.featuredhouse1,
+    },
+    {
+        label: 'keja, Lagos',
+        id: 'keja-lagos',
+        price: 20000,
+        bedroom: 2,
+        interest: '23',
+        rating: 4.8,
+        imgSrc: images.featuredhouse2,
+    },
+    {
+        label: 'eja, Lagos',
+        id: 'eja-lagos',
+        price: 20000,
+        bedroom: 4,
+        interest: '14',
+        rating: 4.2,
+        imgSrc: images.featuredhouse3,
+    },
+    {
+        label: 'ja, Lagos',
+        id: 'ja-lagos',
+        price: 1000000,
+        bedroom: 3,
+        interest: '36',
+        rating: 4.4,
+        imgSrc: images.featuredhouse4,
+    },
+    {
+        label: 'a, Lagos',
+        id: 'a-lagos',
+        price: 1000000,
+        bedroom: 2,
+        interest: '31',
+        rating: 4.6,
+        imgSrc: images.featuredhouse5,
+    },
+    {
+        label: 'Na, Lagos',
+        id: 'na-lagos',
+        price: 20000,
+        bedroom: 3,
+        interest: '8',
+        rating: 4.9,
+        imgSrc: images.featuredhouse1,
+    }
 ];
 
 
@@ -108,44 +110,44 @@ const Featured = () => {
 
     const renderHouse = (data) => {
 
-        const {label,id,price,rating,imgSrc,bedroom,interest} =data;
+        const { label, id, price, rating, imgSrc, bedroom, interest } = data;
 
-      return(
-              <div key={id}  className="buliding">
+        return (
+            <div key={id} className={styles.buliding}>
                 <img src={imgSrc} alt={label} />
-                <div className="details">
-                    <div className="label">{label}</div>
-                    <div className="otherDetails">
-                        <div className="section">
-                         {<icons.PersonIcon />}
-                         <div className="">{bedroom}bedroom</div>
+                <div className={styles.details}>
+                    <div className={styles.label}>{label}</div>
+                    <div className={styles.otherDetails}>
+
+                        <div className={styles.section}>
+                            {<icons.PersonIcon />}
+                            <div className={styles.temp}>{bedroom} bedroom</div>
                         </div>
 
-                        <div className="section">
-                         {<icons.WifiIcon />}
-                         <div className="">WI-FI</div>
+                        <div className={styles.section}>
+                            {<icons.WifiIcon />}
+                            <div className={styles.section}>WI-FI</div>
                         </div>
 
                     </div>
                 </div>
-           <div className="price">
-            <span>RS</span>
-            {price}
-            <span>/annum</span>
-           </div>
-           <div className="interest">
-            {interest} have interest in this property
-           </div>
-          <button className="viewMore">
-            <span>view more </span> {<icons.ArrowForwardIcon/>}
-          </button>
+                <div className={styles.price}>
+                    <span>RS</span>
+                    {price}
+                    <span>/annum</span>
+                </div>
+                <div className={styles.interest}>
+                    {interest} have interest in this property
+                </div>
+                <button className={styles.viewMore}>
+                    <div className={styles.section}>
+                        <span>View More </span>
+                        {<icons.ArrowForwardIcon />}
+                    </div>
+                </button>
 
-              </div>
-    
-
-
-
-      )
+            </div>
+        )
     }
 
 
@@ -159,7 +161,7 @@ const Featured = () => {
                     <icons.KeyboardArrowLeftIcon className={styles.left} />
                 </div>
             </div>
-            <div className={styles.house}>
+            <div className={styles.houses}>
                 {houseConfig.map(renderHouse)}
             </div>
         </div>
