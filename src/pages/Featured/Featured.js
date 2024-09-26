@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Featured.module.scss';
 import cx from 'classnames';
 import { images } from '../../assets/images';
 import { icons } from '../../assets/icons';
-
-
 
 
 const tabConfig = [
@@ -12,6 +10,8 @@ const tabConfig = [
     { label: 'Villa', id: 'villa', icon: <icons.VillaIcon /> },
     { label: 'Apartment', id: 'apartment', icon: <icons.ApartmentIcon /> },
 ];
+
+
 
 const houseConfig = [
     {
@@ -75,20 +75,61 @@ const Featured = () => {
 
     const [currentTab, setCurrentTab] = useState();
     const [currentHouse, setCurrentHouse] = useState();
-    const [activeArrow, setactiveArrow] = useState();
+    const [activeArrow, setActiveArrow] = useState();
 
+    const currentHouseRef =useRef();
 
     useEffect(() => {
 
         setCurrentTab(tabConfig[0])
-
+        setCurrentHouse(houseConfig[0])
+        setActiveArrow('left')
+   
     }, [])
 
+    useEffect(() => {
+   if(currentHouseRef.current){
+    currentHouseRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block:'nearest',
+        inline:'nearest'
+    })
+}
+},[currentHouse])
+
+
     const handlePreviousHouse = () => {
+
+        if(currentHouse.id === houseConfig[0].id)
+            return null
+
+        const currentIndex = houseConfig.findIndex(house =>
+            house.id === currentHouse.id)
+
+        if(currentIndex > 0){
+         setCurrentHouse(houseConfig[currentIndex - 1])
+        }
+        
+        if(houseConfig[0]){
+            setActiveArrow('left')
+        }
+
     }
 
     const handleNextHouse = () => {
-
+          if(currentHouse.id === houseConfig[houseConfig.length-1].id)
+            return null
+       
+          const currentIndex = houseConfig.findIndex(house =>
+            house.id === currentHouse.id)
+       
+            if(currentIndex < houseConfig.length -1){
+            setCurrentHouse(houseConfig[currentIndex + 1])
+        }
+        
+            if(houseConfig[houseConfig.length -1]){
+            setActiveArrow('right')
+        }
     }
 
     const renderTab = (data) => {
@@ -108,12 +149,24 @@ const Featured = () => {
 
     }
 
+
     const renderHouse = (data) => {
 
         const { label, id, price, rating, imgSrc, bedroom, interest } = data;
-
+        
+        const check = currentHouse?.id === id
         return (
-            <div key={id} className={styles.buliding}>
+            <div
+                key={id}
+                className= {cx(styles.buliding ,
+                check ? styles.activeBuliding : ''     
+                )}
+
+                ref={check ? currentHouseRef : null}
+                onClick={() => setCurrentHouse(data)}
+            >
+                               
+                
                 <img src={imgSrc} alt={label} />
                 <div className={styles.details}>
                     <div className={styles.label}>{label}</div>
@@ -145,20 +198,35 @@ const Featured = () => {
                         {<icons.ArrowForwardIcon />}
                     </div>
                 </button>
-
             </div>
         )
     }
 
 
-    return (
+
+return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.title}><span>Featured </span>Houses</div>
                 <div className={styles.tabs}>{tabConfig.map(renderTab)}</div>
                 <div className={styles.scrollButtons}>
-                    <icons.KeyboardArrowLeftIcon className={styles.right} />
-                    <icons.KeyboardArrowLeftIcon className={styles.left} />
+
+                <icons.KeyboardArrowLeftIcon 
+                    className={cx(styles.right,
+                    activeArrow === 'left' ? styles.activeArrow : ''
+                    )} 
+                    // onClick={handleNextHouse}
+                    onClick={handlePreviousHouse}                            
+                    />
+
+                <icons.KeyboardArrowLeftIcon 
+                    className={cx(styles.left,
+                    activeArrow === 'right' ? styles.activeArrow : ''
+                    )} 
+                    onClick={handleNextHouse}
+                    // onClick={handlePreviousHouse}  
+                    />
+               
                 </div>
             </div>
             <div className={styles.houses}>
