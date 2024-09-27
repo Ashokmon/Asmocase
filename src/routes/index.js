@@ -3,13 +3,13 @@ import {
     createBrowserRouter,
     RouterProvider,
     Route,
-    Link,
     createRoutesFromElements,
 } from "react-router-dom";
 import Home from '../pages/Home';
-import Header from '../components/Header';
 import Layout from '../pages/Layout/Layout';
 import Featured from '../pages/Featured';
+import ComingSoon from '../components/ComingSoon';
+import ContactUs from '../pages/ContactUs';
 
 
 const router = createBrowserRouter(
@@ -22,8 +22,8 @@ const router = createBrowserRouter(
             >
                 <Route index element={<Home/>}></Route>
                 <Route path="/featured" element={<Featured/>}></Route>
-                <Route path="/packages" element={<div>packages page</div>}></Route>
-                <Route path="/contactUs" element={<div>contactUs page</div>}></Route>  
+                <Route path="/packages" element={<ComingSoon />}></Route>
+                <Route path="/contactUs" element={<ContactUs/>}></Route>  
                
             </Route>
         </>

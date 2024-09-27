@@ -92,7 +92,7 @@ const Featured = () => {
     currentHouseRef.current.scrollIntoView({
         behavior: 'smooth',
         block:'nearest',
-        inline:'nearest'
+        inline:'nearest',
     })
 }
 },[currentHouse])

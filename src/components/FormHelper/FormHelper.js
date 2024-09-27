@@ -6,7 +6,7 @@ function FormHelper({
     config =[], 
     onSubmit = () =>{},
     submitConfig ={} ,
-    formStyles ={} 
+    formStyles ={},
 }) {
 
     const [formData, setFormdata] = useState({})
