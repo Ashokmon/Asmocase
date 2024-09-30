@@ -12,8 +12,6 @@ const Defaultconfig = {
 }
 
 
-
-
 const ComingSoon = ({config= Defaultconfig})  => {
     const {title,description, buttonText,imgSrc,route} = config;
   return (

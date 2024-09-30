@@ -3,6 +3,7 @@
 .container{
     background-color: $primaryColor;
     color:$baseColor;
+    
 
     .header{
 
@@ -114,6 +115,7 @@
            position: absolute;
            top:0;
            left:0;
+           z-index:9999;
 
            .closeIcon{
             display: block;

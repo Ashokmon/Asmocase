@@ -3,7 +3,7 @@ import featuredhouse2 from '../images/featuredhouse2.png';
 import featuredhouse3 from '../images/featuredhouse3.png';
 import featuredhouse4 from '../images/featuredhouse4.png';
 import featuredhouse5 from '../images/featuredhouse5.png';
-import UnderConstruction from '../images/hostRectangleimg.png';
+import UnderConstruction from '../images/underconstrution.jpg';
 
 
 

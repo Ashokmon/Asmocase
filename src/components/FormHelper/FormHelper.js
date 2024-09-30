@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import styles from './FormHelper.module.scss';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
+
 function FormHelper({ 
+    
     config =[], 
     onSubmit = () =>{},
     submitConfig ={} ,
