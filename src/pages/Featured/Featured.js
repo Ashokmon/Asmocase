@@ -7,12 +7,24 @@ import { icons } from '../../assets/icons';
 
 const tabConfig = [
 
-    { label: 'House', id: 'house', icon: <icons.HouseIcon /> },
-    { label: 'Villa', id: 'villa', icon: <icons.VillaIcon /> },
-    { label: 'Apartment', id: 'apartment', icon: <icons.ApartmentIcon /> },
-    
-];
+    {
+        label: 'House',
+        id: 'house',
+        icon: <icons.HouseIcon />
+    },
 
+    {
+        label: 'Villa',
+        id: 'villa',
+        icon: <icons.VillaIcon />
+    },
+    {
+        label: 'Apartment',
+        id: 'apartment',
+        icon: <icons.ApartmentIcon />
+    },
+
+];
 
 
 const houseConfig = [

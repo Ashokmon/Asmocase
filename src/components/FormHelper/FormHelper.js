@@ -4,11 +4,12 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 
 function FormHelper({ 
-    
+
     config =[], 
     onSubmit = () =>{},
     submitConfig ={} ,
     formStyles ={},
+    
 }) {
 
     const [formData, setFormdata] = useState({})
